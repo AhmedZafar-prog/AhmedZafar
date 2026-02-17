@@ -31,7 +31,7 @@ const certificationsData: CertificationItem[] = [
     title: "The Duke of Edinburgh's International Award",
     issuer: "Duke of Edinburgh",
     date: "2023",
-    image: "public/assets/certificates/duke.png",
+    image: "/assets/certificates/duke.png",
     description: "Completed a trekking expedition at Mubarak Village involving mountain hiking and an overnight camp as part of the Award program. The activity concluded with a beach clean-up drive at Karachi Sea View, demonstrating endurance, teamwork, and environmental responsibility."
   },
   {
