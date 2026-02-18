@@ -10,42 +10,42 @@ const certificationsData: CertificationItem[] = [
     title: "Meritorious Awards",
     issuer: "Habib University",
     date: "2026",
-    image: "/assets/certificates/meritorious.png",
+    image: "public/assets/certificates/meritorious.png",
     description: "Selected and invited to attend the Meritorious Awards ceremony hosted by Habib University, honoring high-performing students from top colleges for exceptional academic achievement."
   },
   {
     title: "International Computer Science Competition",
     issuer: "icsc",
     date: "2025",
-    image: "/assets/certificates/icsc.jpeg",
+    image: "public/assets/certificates/icsc.jpeg",
     description: "Participated in an international-level computer science competition focused on algorithmic thinking and advanced problem-solving. Successfully qualified for the pre-final round and received a Certificate of Participation."
   },
   {
     title: "Open Day - 2025",
     issuer: "Enrichment Habib",
     date: "2025",
-    image: "/assets/certificates/openday.png",
+    image: "public/assets/certificates/openday.png",
     description: "Recognized for leadership and social impact during Open Day 2025 by organizing a sustainability stall and distributing 20–25 baby plants connected with Tree Of Hope , to families, encouraging environmental responsibility within the community."
   },
   {
     title: "The Duke of Edinburgh's International Award",
     issuer: "Duke of Edinburgh",
     date: "2023",
-    image: "/assets/certificates/duke.png",
+    image: "public/assets/certificates/duke.png",
     description: "Completed a trekking expedition at Mubarak Village involving mountain hiking and an overnight camp as part of the Award program. The activity concluded with a beach clean-up drive at Karachi Sea View, demonstrating endurance, teamwork, and environmental responsibility."
   },
   {
     title: "Cardboard F1 Racing Console",
     issuer: "Habib public school",
     date: "2022",
-    image: "/assets/certificates/f1-car.png",
+    image: "public/assets/certificates/f1-car.png",
     description: "Developed an interactive F1 racing console entirely from cardboard, simulating a rotating track and requiring precise control to prevent the car from getting crashed. Recognized among the top five STEM projects of the event for innovation and Creativity"
   },
   {
     title: "Urdu Fahmi Competition",
     issuer: "Habib public high school",
     date: "2025",
-    image: "/assets/certificates/urdufahmi.png",
+    image: "public/assets/certificates/urdufahmi.png",
     description: "Awarded 1st place in a team-based Urdu competition featuring poetry, listening, writing, and Q&A challenges. Recognized for excellent teamwork and language proficiency.",
 
   },
@@ -53,14 +53,14 @@ const certificationsData: CertificationItem[] = [
     title: "SST - Interschool Compeitition",
     issuer: "SST - rashidabad",
     date: "2022",
-    image: "/assets/certificates/sst-interschool.png",
+    image: "public/assets/certificates/sst-interschool.png",
     description: "Represented my school in the IT quiz segment of the SST Public Inter-School Competition, demonstrating technical knowledge and problem-solving skills. Received a certificate of participation."
   },
   {
     title: "International Kangroo Linguistic Competition",
     issuer: "IKLC",
     date: "2021",
-    image: "/assets/certificates/kangroo2021.png",
+    image: "public/assets/certificates/kangroo2021.png",
     description: "Participated in the IKLC 2021 competition and achieved the 1-Star Credit Level"
   },
 ];
@@ -70,14 +70,18 @@ interface CardProps {
   index: number;
   theme: Theme;
   onThrow: () => void;
+  onOpen: () => void;
 }
+
 
 const Card: React.FC<CardProps> = ({ 
   item, 
   index, 
   theme, 
-  onThrow 
+  onThrow,
+  onOpen
 }) => {
+
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateValue = useTransform(x, [-200, 200], [-15, 15]);
@@ -95,6 +99,8 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <motion.div
+     onClick={isTop ? onOpen : undefined}
+
       style={{ 
         x: isTop ? x : currentLayer.x,
         y: isTop ? y : currentLayer.y,
@@ -148,6 +154,7 @@ const Card: React.FC<CardProps> = ({
 
 const Certifications: React.FC<CertificationsProps> = ({ theme }) => {
   const [deck, setDeck] = useState(certificationsData);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleThrow = () => {
     setDeck(prev => {
@@ -175,12 +182,15 @@ const Certifications: React.FC<CertificationsProps> = ({ theme }) => {
                if (idx > 2) return null;
                return (
                 <Card 
-                  key={cert.title} 
-                  item={cert} 
-                  index={idx} 
-                  theme={theme}
-                  onThrow={handleThrow}
-                />
+  key={cert.title} 
+  item={cert} 
+  index={idx} 
+  theme={theme}
+  onThrow={handleThrow}
+  onOpen={() => setSelectedImage(cert.image)}
+/>
+
+
               );
             })}
           </AnimatePresence>
@@ -241,6 +251,28 @@ const Certifications: React.FC<CertificationsProps> = ({ theme }) => {
           );
         })}
       </div>
+      <AnimatePresence>
+  {selectedImage && (
+    <motion.div
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-[999]"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={() => setSelectedImage(null)}
+    >
+      <motion.img
+        src={selectedImage}
+        className="max-w-[95%] max-h-[95%] rounded-xl shadow-2xl"
+        initial={{ scale: 0.9 }}
+        animate={{ scale: 1 }}
+        exit={{ scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </section>
   );
 };
