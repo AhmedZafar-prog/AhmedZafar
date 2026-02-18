@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
         stiffness: 400,
         damping: 28,
         staggerChildren: 0.06,
-        delayChildren: 0.05,
+        delayChildren: 0.1,
       },
     },
   };
