@@ -50,14 +50,8 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
   const menuVariants = {
     closed: {
       opacity: 0,
-      scale: 0.9,
-      y: -20,
-      x: 20,
-      filter: 'blur(15px)',
-      transition: {
-        duration: 0.3,
-        ease: [0.4, 0, 1, 1],
-      },
+      scale: 0.95,
+      y: -15,
     },
     open: {
       opacity: 1,
@@ -160,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className={`absolute top-full right-6 mt-4 w-72 rounded-[2.2rem] border-2 overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] backdrop-blur-[60px] z-[105] ${
+            className={`absolute top-full right-6 mt-4 w-72 rounded-[2.2rem] border-2 overflow-hidden shadow-2xl backdrop-blur-md z-[105] ${
               theme === 'dark' ? 'bg-zinc-950/95 border-white/20 text-white' : 'bg-white/95 border-black/10 text-black'
             }`}
           >
