@@ -171,7 +171,7 @@ const Certifications: React.FC<CertificationsProps> = ({ theme }) => {
     <section id="certifications" className={`py-40 overflow-hidden scroll-mt-24 relative ${theme === 'dark' ? 'bg-black' : 'bg-zinc-50'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12 relative z-10">
         <h2 className="text-3xl sm:text-6xl md:text-9xl font-[1000] mb-6 tracking-tighter uppercase leading-none break-words">
-         Certifications
+         Achievement
         </h2>
       </div>
 
