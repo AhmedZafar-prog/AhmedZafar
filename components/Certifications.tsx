@@ -14,11 +14,25 @@ const certificationsData: CertificationItem[] = [
     description: "Selected and invited to attend the Meritorious Awards ceremony hosted by Habib University, honoring high-performing students from top colleges for exceptional academic achievement."
   },
   {
+    title: "Letter of Appreciation",
+    issuer: "Principal Habib Public School",
+    date: "2026",
+    image: "/assets/certificates/letter.png",
+    description: "Served as Vice President of the Environmental Society, mentoring students and organizing environmental awareness campaigns and sustainability stalls. Received a Letter of Appreciation from the Principal for leadership and contribution to the society."
+  },
+  {
     title: "International Computer Science Competition",
     issuer: "icsc",
     date: "2025",
     image: "/assets/certificates/icsc.jpeg",
     description: "Participated in an international-level computer science competition focused on algorithmic thinking and advanced problem-solving. Successfully qualified for the pre-final round and received a Certificate of Participation."
+  },
+  {
+    title: "Interactive C++ Game Project – Open Day",
+    issuer: "Habib Public High School",
+    date: "2025",
+    image: "/assets/certificates/compopenday.PNG",
+    description: "Built a number-guessing game in C++ where players attempt to predict a computer-generated number within a set range(with different level's'). The project was showcased during the school’s Open Day as part of the programming exhibition, highlighting basic programming logic and user interaction."
   },
   {
     title: "Open Day - 2025",
