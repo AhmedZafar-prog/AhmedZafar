@@ -262,7 +262,7 @@ const Certifications: React.FC<CertificationsProps> = ({ theme }) => {
     >
       <motion.img
         src={selectedImage}
-        className="max-w-[95%] max-h-[95%] rounded-xl shadow-2xl"
+        className="max-w-[95%] max-h-[95%] shadow-2xl"
         initial={{ scale: 0.9 }}
         animate={{ scale: 1 }}
         exit={{ scale: 0.9 }}
