@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ theme, toggleTheme }) => {
     { label: 'Education', id: 'education' },
     { label: 'Skills', id: 'skills' },
     { label: 'Projects', id: 'work' },
-    { label: 'Certifications', id: 'certifications' },
+    { label: 'Achievements', id: 'certifications' },
   ];
 
   const menuVariants = {
